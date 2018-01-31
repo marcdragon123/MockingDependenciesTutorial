@@ -91,6 +91,7 @@ public class TestTransferMoneyToAnotherAccount {
 		
 		//assert (verfiy the behaviour)
 		// we use times(1) to assert that this method has been called only once
+		// according to business needs, we don't want to deposit or withdraw money more that once in this operation
 		InOrder inOrder = inOrder(dataRepository);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(from.AccountNumber);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(to.AccountNumber);
