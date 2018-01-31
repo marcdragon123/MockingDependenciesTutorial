@@ -90,12 +90,12 @@ public class TestTransferMoneyToAnotherAccount {
 		InternalTransferStatus transferStatus= bankingCoreService.TransferMoneyToAnotherAccount(transferAmount, from, to);
 		
 		//assert (verfiy the behaviour)
-		
+		// we use times(1) to assert that this method has been called only once
 		InOrder inOrder = inOrder(dataRepository);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(from.AccountNumber);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(to.AccountNumber);
-		inOrder.verify(dataRepository).SetBalanceOfAccount(from.AccountNumber, 1000-transferAmount);
-		inOrder.verify(dataRepository).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
+		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(from.AccountNumber, 1000-transferAmount);
+		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
 		
 	}
 	
