@@ -45,7 +45,7 @@ public class TestTransferMoneyToAnotherAccount {
 		DataRepository dataRepository = mock(DataRepository.class);
 		InterBankingService interBankingService = mock(InterBankingService.class);
 		// stub
-		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(1000d);
+		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
 		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
 		// instantiate the System Under Test (SUT)
 		CoreService bankingCoreService =  new CoreService (emailSender,dataRepository,interBankingService);
@@ -61,7 +61,7 @@ public class TestTransferMoneyToAnotherAccount {
 	
 	/*
 	 * Here we want to verify the behaviour of implemented business logic.
-	 * In fact, we want to check whether the SUT has used it's dependencies in a correct manner.
+	 * In fact, we want to check whether the SUT has used its dependencies in a correct manner.
 	 * in behavioural verification order of calls and passed parameters are crucial.
 	 * Exercise2: there is an inconsistency between the test and the SUT. Find and remove the given bug.
 	 * Hint: The bug is in the production code
@@ -96,7 +96,7 @@ public class TestTransferMoneyToAnotherAccount {
 		inOrder.verify(dataRepository).GetBalanceOfAccount(from.AccountNumber);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(to.AccountNumber);
 		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(from.AccountNumber, 1000-transferAmount);
-		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
+		inOrder.verify(dataRepository,times(2)).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
 		
 	}
 	
