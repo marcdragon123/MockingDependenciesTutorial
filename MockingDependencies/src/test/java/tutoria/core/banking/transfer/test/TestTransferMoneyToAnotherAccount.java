@@ -89,7 +89,7 @@ public class TestTransferMoneyToAnotherAccount {
 		
 		InternalTransferStatus transferStatus= bankingCoreService.TransferMoneyToAnotherAccount(transferAmount, from, to);
 		
-		//assert (verfiy the behaviour)
+		// assert (verfiy the behaviour)
 		// we use times(1) to assert that this method has been called only once
 		// according to business needs, we don't want to deposit or withdraw money more that once in this operation
 		InOrder inOrder = inOrder(dataRepository);
@@ -180,9 +180,9 @@ public class TestTransferMoneyToAnotherAccount {
 	@Test
 	public void testFraudEmailToSecurityCenterExercise5() {
 		
-		//act
-		
 		//arrange
+		
+		//act
 		
 		//assert
 		
@@ -191,9 +191,9 @@ public class TestTransferMoneyToAnotherAccount {
 	@Test
 	public void testNoBalancePathExercise6() {
 	
-		//act
-		
 		//arrange
+		
+		//act
 		
 		//assert
 		
