@@ -96,7 +96,7 @@ public class TestTransferMoneyToAnotherAccount {
 		inOrder.verify(dataRepository).GetBalanceOfAccount(from.AccountNumber);
 		inOrder.verify(dataRepository).GetBalanceOfAccount(to.AccountNumber);
 		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(from.AccountNumber, 1000-transferAmount);
-		inOrder.verify(dataRepository,times(2)).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
+		inOrder.verify(dataRepository,times(1)).SetBalanceOfAccount(to.AccountNumber,2000+transferAmount);
 		
 	}
 	

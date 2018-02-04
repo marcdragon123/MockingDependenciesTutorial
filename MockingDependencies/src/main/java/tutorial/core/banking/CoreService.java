@@ -43,8 +43,8 @@ public class CoreService {
 		
 		// critical business logic ends here
 		
-		dataRepository.SetBalanceOfAccount(from.AccountNumber,toNewBalanace);
-		dataRepository.SetBalanceOfAccount(to.AccountNumber,fromNewBalanace);
+		dataRepository.SetBalanceOfAccount(from.AccountNumber,fromNewBalanace);
+		dataRepository.SetBalanceOfAccount(to.AccountNumber,toNewBalanace);
 		
 		return InternalTransferStatus.Valid;
 	}
