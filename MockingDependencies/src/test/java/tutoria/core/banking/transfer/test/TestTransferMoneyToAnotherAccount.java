@@ -114,7 +114,7 @@ public class TestTransferMoneyToAnotherAccount {
 		double transferAmount= 1001;
 				
 		// mock external dependencies
-		EmailSender emailSender = new EmailSender();
+		EmailSender emailSender =mock(EmailSender.class);
 		DataRepository dataRepository = mock(DataRepository.class);
 		InterBankingService interBankingService = mock(InterBankingService.class);
 		// stub
