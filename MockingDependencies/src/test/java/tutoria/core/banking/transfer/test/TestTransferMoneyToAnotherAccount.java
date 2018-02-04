@@ -155,7 +155,7 @@ public class TestTransferMoneyToAnotherAccount {
 		DataRepository dataRepository = mock(DataRepository.class);
 		InterBankingService interBankingService = mock(InterBankingService.class);
 		// stub
-		doThrow(new Exception()).when(emailSender).SendEmail(anyString(), anyString(), anyString());
+		doThrow(new ConnectException()).when(emailSender).SendEmail(anyString(), anyString(), anyString());
 		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
 		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
 		// instantiate the System Under Test (SUT)

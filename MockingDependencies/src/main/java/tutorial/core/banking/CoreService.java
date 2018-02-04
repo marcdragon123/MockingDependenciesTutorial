@@ -33,9 +33,16 @@ public class CoreService {
 			return  InternalTransferStatus.Error;
 		
 		if(IsThisAFraudTransfer(amount,from)) {
-			SendEmailToSecutiryCenter(amount,from,to);
+			try {
+				SendEmailToSecutiryCenter(amount,from,to);	
+			}
+			catch(ConnectException e){
+				
+			}
+			
 			return InternalTransferStatus.Fraud;
 		}
+			
 			
 		
 		double toNewBalanace = toBalance+amount;
