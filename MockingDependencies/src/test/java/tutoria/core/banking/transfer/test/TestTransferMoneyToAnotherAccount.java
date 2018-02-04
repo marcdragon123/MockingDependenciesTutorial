@@ -56,7 +56,7 @@ public class TestTransferMoneyToAnotherAccount {
 		
 		//assert
 		
-		assertThat(transferStatus,is(InternalTransferStatus.Fraud));
+		assertThat(transferStatus,is(InternalTransferStatus.Valid));
 	}
 	
 	/*
