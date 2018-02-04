@@ -178,24 +178,65 @@ public class TestTransferMoneyToAnotherAccount {
 	 */
 	
 	@Test
-	public void testFraudEmailToSecurityCenterExercise5() {
+	public void testFraudEmailToSecurityCenterExercise5() throws ConnectException {
 		
 		//arrange
 		
+		// define a fraud scenario
+		Account from= new Account("accountNumber1");
+		Account to= new Account("accountNumber2");
+		double transferAmount= 1001;
+				
+		// mock external dependencies
+		EmailSender emailSender = mock(EmailSender.class);
+		DataRepository dataRepository = mock(DataRepository.class);
+		InterBankingService interBankingService = mock(InterBankingService.class);
+		// stub
+		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
+		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
+		// instantiate the System Under Test (SUT)
+		CoreService bankingCoreService =  new CoreService (emailSender,dataRepository,interBankingService);
+			
 		//act
-		
+					
+		InternalTransferStatus transferStatus= bankingCoreService.TransferMoneyToAnotherAccount(transferAmount, from, to);
+				
 		//assert
+		
+		String emailAddress="security@mock.co";
+		String mailSubject="Hello Secutiry Center!";
+		String mailBody="Go and catch him";
+		verify(emailSender).SendEmail(emailAddress, mailSubject, mailBody);
 		
 	}
 	
 	@Test
-	public void testNoBalancePathExercise6() {
+	public void testNoBalancePathExercise6() throws ConnectException {
 	
 		//arrange
 		
+		// define a fraud scenario
+		Account from= new Account("accountNumber1");
+		Account to= new Account("accountNumber2");
+		double transferAmount= 4001;
+				
+		// mock external dependencies
+		EmailSender emailSender = mock(EmailSender.class);
+		DataRepository dataRepository = mock(DataRepository.class);
+		InterBankingService interBankingService = mock(InterBankingService.class);
+		// stub
+		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
+		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
+		// instantiate the System Under Test (SUT)
+		CoreService bankingCoreService =  new CoreService (emailSender,dataRepository,interBankingService);
+			
 		//act
-		
+					
+		InternalTransferStatus transferStatus= bankingCoreService.TransferMoneyToAnotherAccount(transferAmount, from, to);
+				
 		//assert
+		
+		assertThat(transferStatus,is(InternalTransferStatus.Error));
 		
 	}
 	
