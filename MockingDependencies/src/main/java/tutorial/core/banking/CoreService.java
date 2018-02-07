@@ -20,6 +20,15 @@ public class CoreService {
 		this.interBankingService=interBankingService;
 	}
 	
+	public String EncryptTransaction(double amount, Account from, Account to) {
+		
+		return amount+"-aldlasdas^@)_(#@!d"
+		+from.AccountNumber+"!@#$!@@#$^SDFSAD!@#$"
+		+to.AccountNumber+"1239823123120398123";
+		
+	}
+	
+	
 	
 	public InternalTransferStatus TransferMoneyToAnotherAccount(double amount, Account from, Account to) throws ConnectException {
 		
