@@ -50,4 +50,3 @@ Add this function to TestTransferMoneyToAnotherAccount
 		assertThat(transferStatus,is(InternalTransferStatus.Valid));
 		
 	}
-	```
