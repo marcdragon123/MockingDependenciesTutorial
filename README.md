@@ -11,7 +11,7 @@
 4. ```git bisect bad``` // we know the current commit is bad
 5. ```git bisect good 37cc77df0```
 6. ```git bisect run ./MockingDependencies/gradlew -b ./MockingDependencies/build.gradle test``` // run tests to identify the first bad commit
-7. ```git diff ed8fa8a 37cc77 MockingDependencies\src\main\java\tutorial\core\banking\CoreService.java``` // to see the difference between files
+7. ```git diff ed8fa8a 37cc77 MockingDependencies\src\main\java\tutorial\core\banking\CoreService.java``` // to get the diff of the file between good and bad commits 
 
 ## Part 2
 
