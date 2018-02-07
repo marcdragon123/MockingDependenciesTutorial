@@ -1,5 +1,8 @@
 # Git Bisect Tutorial
 
+* Production Code : [CoreService](https://github.com/mirsaeedi/MockingDependencies/tree/git_bisect/MockingDependencies/src/main/java/tutorial/core/banking)
+* Test Code : [TestTransferMoneyToAnotherAccount](https://github.com/mirsaeedi/MockingDependencies/tree/git_bisect/MockingDependencies/src/test/java/tutoria/core/banking/transfer/test)
+
 ## Part 1
 
 1. git clone https://github.com/mirsaeedi/MockingDependencies.git
