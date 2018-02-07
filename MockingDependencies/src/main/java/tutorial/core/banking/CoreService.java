@@ -73,6 +73,11 @@ public class CoreService {
 		
 	}
 	
+	public void dummyMethod10() {
+		
+		
+	}
+	
 	public InternalTransferStatus TransferMoneyToAnotherAccount(double amount, Account from, Account to) throws ConnectException {
 		
 		double fromBalance=dataRepository.GetBalanceOfAccount(from.AccountNumber);
