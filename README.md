@@ -4,7 +4,7 @@
 
 1. git clone https://github.com/mirsaeedi/MockingDependencies.git
 2. git checkout git_bisect      // our code is in this branch
-3. git bisect start // run this command in the project's root folder
+3. git bisect start // run this command from the project root
 4. git bisect bad // we know the current commit is bad
 5. git bisect good 37cc77df0
 6. git bisect run ./MockingDependencies/gradlew -b ./MockingDependencies/build.gradle test // run tests to identify the first bad commit
