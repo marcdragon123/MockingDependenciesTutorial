@@ -1,7 +1,43 @@
-# Mockito Tutorial
+# Git Bisect Tutorial
 
-The code contains a simple [banking example](https://github.com/mirsaeedi/MockingDependencies/tree/master/MockingDependencies/src/main/java/tutorial/core/banking) to transfer money from one account to another. There are also 6 [unit tests](https://github.com/mirsaeedi/MockingDependencies/tree/master/MockingDependencies/src/test/java/tutoria/core/banking/transfer/test) to check different corners of the domain logic. However, all of these tests are failing because of a bug in the production code or test code. Students should try to find the bugs and modify the code to fix the tests.
+## Part 1
 
-# Answers
+1. git clone https://github.com/mirsaeedi/MockingDependencies.git
+2. git checkout git_bisect      // our code is in this branch
+3. git bisect start // run this command in the project's root folder
+4. git bisect bad // we know the current commit is bad
+5. git bisect good 37cc77df0
+6. git bisect run ./MockingDependencies/gradlew -b ./MockingDependencies/build.gradle test // run tests to identify the first bad commit
+7. git diff ed8fa8a 37cc77 MockingDependencies\src\main\java\tutorial\core\banking\CoreService.java // to see the difference between files
 
-the answers to the exercises are in the branches of this repo.
+## Part 2
+
+1. add a new test function
+
+```
+  @Test
+	public void testFraudDetection() throws ConnectException {
+	
+		Account from= new Account("accountNumber1");
+		Account to= new Account("accountNumber2");
+		double transferAmount= 900;
+				
+		// mock external dependencies
+		EmailSender emailSender = mock(EmailSender.class);
+		DataRepository dataRepository = mock(DataRepository.class);
+		InterBankingService interBankingService = mock(InterBankingService.class);
+		// instantiate the System Under Test (SUT)
+		CoreService bankingCoreService =  new CoreService (emailSender,dataRepository,interBankingService);
+		// stub
+		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
+		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
+		//act
+		
+		InternalTransferStatus transferStatus= bankingCoreService.TransferMoneyToAnotherAccount(transferAmount, from, to);
+		
+		//assert
+		
+		assertThat(transferStatus,is(InternalTransferStatus.Valid));
+		
+	}
+	```
