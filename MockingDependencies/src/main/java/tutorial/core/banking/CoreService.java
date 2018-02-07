@@ -22,7 +22,7 @@ public class CoreService {
 	
 	public String EncryptTransaction(double amount, Account from, Account to) {
 		
-		return amount+"-aldlasdas^@)_(#@!d"
+		return amount+"-aldas^@)_(#@!d"
 		+from.AccountNumber+"!@#$!@@#$^SDFSAD!@#$"
 		+to.AccountNumber+"1239823123120398123";
 		
@@ -44,6 +44,16 @@ public class CoreService {
 	}
 	
 	public void dummyMethod4() {
+		
+		
+	}
+	
+	public void dummyMethod5() {
+		
+		
+	}
+	
+	public void dummyMethod6() {
 		
 		
 	}
