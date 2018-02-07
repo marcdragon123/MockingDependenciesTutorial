@@ -9,7 +9,7 @@
 2. ```git checkout git_bisect```      // our code is in this branch
 3. ```git bisect start``` // run this command from the project root
 4. ```git bisect bad``` // we know the current commit is bad
-5. ```git bisect good 37cc77df0```
+5. ```git bisect good 37cc77df0``` somehow we found out that we didn't have any problem in [37cc77df0](https://github.com/mirsaeedi/MockingDependencies/commit/37cc77df08ceb7d5d95067c3a7324ea883090d39#diff-36439d71f4007bbfb92b1ed07d8ae3d5) commit
 6. ```git bisect run ./MockingDependencies/gradlew -b ./MockingDependencies/build.gradle test``` // run tests to identify the first bad commit
 7. ```git diff ed8fa8a 37cc77 MockingDependencies\src\main\java\tutorial\core\banking\CoreService.java``` // to get the diff of the file between good and bad commits 
 
