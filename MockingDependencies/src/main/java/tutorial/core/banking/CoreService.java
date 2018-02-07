@@ -84,6 +84,11 @@ public class CoreService {
 		
 	}
 	
+	public void dummyMethod12() {
+		
+		
+	}
+	
 	
 	
 	public InternalTransferStatus TransferMoneyToAnotherAccount(double amount, Account from, Account to) throws ConnectException {
