@@ -28,6 +28,7 @@ public class CoreService {
 		
 	}
 	
+	
 	public void dummyMethod1() {
 		
 		
@@ -130,7 +131,9 @@ public class CoreService {
 		
 		// Use some fancy machine learning techniques to detect fraud
 		
-		if(amount>1000)
+		double limit = 800; // Should be 1000 based on business rules 
+		
+		if(amount>limit) 
 			return true;
 		
 		return false;
