@@ -1,10 +1,18 @@
 package tutorial.core.banking;
 
+import java.util.concurrent.TimeUnit;
+
 /*
  *  This is an external Dependency
  */
 public class DataRepository implements ExternalDependency {
 
+	Logger logger=new Logger();
+	
+	public DataRepository() {
+		
+	}
+	
 	public double GetBalanceOfAccount(String accountNumber) {
 	
 		// this method reads the balance amount from the database.
@@ -13,12 +21,24 @@ public class DataRepository implements ExternalDependency {
 		// because we want our unit tests to run very fast. 
 		// This way we can test our software without losing any extra seconds
 		
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 
 	public void SetBalanceOfAccount(String accountNumber, double amount) {
 		
-		throw new UnsupportedOperationException("this feature is not implemented yet. another team is working on it"); 
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 
 }
