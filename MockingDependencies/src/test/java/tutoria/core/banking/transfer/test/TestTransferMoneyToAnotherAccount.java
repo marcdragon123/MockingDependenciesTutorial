@@ -15,8 +15,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import tutorial.core.banking.Account;
 import tutorial.core.banking.CoreService;
 import tutorial.core.banking.CoreService.InternalTransferStatus;
-import tutorial.core.banking.DataRepository;
-import tutorial.core.banking.EmailSender;
+import tutorial.core.banking.IDataRepository;
+import tutorial.core.banking.IEmailSender;
 import tutorial.core.banking.InterBankingService;
 
 /*
@@ -29,13 +29,11 @@ import tutorial.core.banking.InterBankingService;
 public class TestTransferMoneyToAnotherAccount {
 	
 	 @Mock
-	 DataRepository dataRepository;
+	 IDataRepository dataRepository;
 	 
 	 @Mock
-	 EmailSender EmailSender;
+	 IEmailSender EmailSender;
 	 
-	 @Mock
-	 InterBankingService InterBankingService;
 
 	 @InjectMocks
 	 CoreService bankingCoreService;

@@ -5,14 +5,19 @@ import java.net.SocketException;
 
 public class CoreService {
 
-	private EmailSender emailSender=new EmailSender(); // External Dependency
-	private DataRepository  dataRepository= new DataRepository(); // External Dependency
+	private IEmailSender emailSender; // External Dependency
+	private IDataRepository  dataRepository; // External Dependency
 
 	
 	// We want to be able to test our code. So, our code should be testable.
 	// The first step in having a testable code is that you should pass dependencies through the constructor of the class.
 	// This way, you can pass fake and mocked objects instead of actual implementations during the test
 	
+	public CoreService(IEmailSender emailSender,IDataRepository dataRepository) {
+		
+		this.emailSender=emailSender;
+		this.dataRepository=dataRepository;
+	}
 	
 	
 	public InternalTransferStatus TransferMoneyToAnotherAccount(double amount, Account from, Account to) throws ConnectException {

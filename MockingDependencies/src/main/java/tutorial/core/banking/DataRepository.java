@@ -5,14 +5,18 @@ import java.util.concurrent.TimeUnit;
 /*
  *  This is an external Dependency
  */
-public class DataRepository implements ExternalDependency {
+public class DataRepository implements ExternalDependency, IDataRepository {
 
-	Logger logger=new Logger();
+	private ILogger logger;
 	
-	public DataRepository() {
-		
+	public DataRepository(ILogger logger) {
+		this.logger=logger;
 	}
 	
+	/* (non-Javadoc)
+	 * @see tutorial.core.banking.IDataRepository#GetBalanceOfAccount(java.lang.String)
+	 */
+	@Override
 	public double GetBalanceOfAccount(String accountNumber) {
 	
 		// this method reads the balance amount from the database.
@@ -31,6 +35,10 @@ public class DataRepository implements ExternalDependency {
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see tutorial.core.banking.IDataRepository#SetBalanceOfAccount(java.lang.String, double)
+	 */
+	@Override
 	public void SetBalanceOfAccount(String accountNumber, double amount) {
 		
 		try {
