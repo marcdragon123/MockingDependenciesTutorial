@@ -4,6 +4,22 @@ import java.util.concurrent.TimeUnit;
 
 public class Logger {
 
+	// singleton instance
+	private static Logger instance=null;
+	
+	public static Logger getInstance() {
+		
+		if(instance==null)
+			instance=new Logger();
+		
+		return instance;
+		
+	}
+	
+	private Logger() {
+		
+	}
+	
 	public void log(String string) {
 		
 		try {

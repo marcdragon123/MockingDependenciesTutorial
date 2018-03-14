@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class DataRepository implements ExternalDependency {
 
-	Logger logger=new Logger();
+	Logger logger=Logger.getInstance();
 	
 	public DataRepository() {
 		

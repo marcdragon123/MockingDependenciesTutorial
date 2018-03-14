@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EmailSender implements ExternalDependency {
 
-	Logger logger=new Logger();
+	Logger logger=Logger.getInstance();
 	
 	public EmailSender() {
 		

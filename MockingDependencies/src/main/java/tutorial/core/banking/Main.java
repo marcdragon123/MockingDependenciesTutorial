@@ -7,8 +7,7 @@ public class Main {
 	public static void main(String[] args) throws ConnectException {
 		
 		CoreService coreService=new CoreService();
-		coreService.TransferMoneyToAnotherAccount(10, new Account("0"), new Account("0"));
-
+		coreService.TransferMoneyToAnotherAccount(10, new Account("Alice"), new Account("Bob"));
 	}
 
 }

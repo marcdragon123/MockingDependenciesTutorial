@@ -17,7 +17,6 @@ import tutorial.core.banking.CoreService;
 import tutorial.core.banking.CoreService.InternalTransferStatus;
 import tutorial.core.banking.DataRepository;
 import tutorial.core.banking.EmailSender;
-import tutorial.core.banking.InterBankingService;
 
 /*
  * We want to test every corner of our implemented business logic
@@ -28,14 +27,11 @@ import tutorial.core.banking.InterBankingService;
 @RunWith(MockitoJUnitRunner.class)
 public class TestTransferMoneyToAnotherAccount {
 	
-	 @Mock
-	 DataRepository dataRepository;
+	 //@Mock
+	 //DataRepository dataRepository;
 	 
-	 @Mock
-	 EmailSender EmailSender;
-	 
-	 @Mock
-	 InterBankingService InterBankingService;
+	 //@Mock
+	 //EmailSender EmailSender;
 
 	 @InjectMocks
 	 CoreService bankingCoreService;
@@ -43,21 +39,15 @@ public class TestTransferMoneyToAnotherAccount {
 	/*
 	 * Here we want to test the happy path of CoreService.TransferMoneyToAnotherAccount method.
 	 * in happy paths nothing bad happens and everything should work as expected.
-	 * Exercise1: there is an inconsistency between the test and the SUT (System Under Test). 
-	 * Find and remove the given bug in the test method. 
 	 */
 	@Test
-	public void testHappyPathExercise1() throws ConnectException {
+	public void testTransferMoneyHappyPath() throws ConnectException {
 		 
 		//arrange
 		
 		Account from= new Account("accountNumber1");
 		Account to= new Account("accountNumber2");
 		double transferAmount= 100;
-		
-		// stub
-		when(dataRepository.GetBalanceOfAccount("accountNumber1")).thenReturn(4000d);
-		when(dataRepository.GetBalanceOfAccount("accountNumber2")).thenReturn(2000d);
 		
 		//act
 		

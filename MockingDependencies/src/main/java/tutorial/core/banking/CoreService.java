@@ -14,7 +14,6 @@ public class CoreService {
 	// This way, you can pass fake and mocked objects instead of actual implementations during the test
 	
 	
-	
 	public InternalTransferStatus TransferMoneyToAnotherAccount(double amount, Account from, Account to) throws ConnectException {
 		
 		double fromBalance=dataRepository.GetBalanceOfAccount(from.AccountNumber);
