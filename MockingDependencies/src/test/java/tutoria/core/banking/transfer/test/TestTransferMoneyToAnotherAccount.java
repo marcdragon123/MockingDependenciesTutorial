@@ -17,7 +17,6 @@ import tutorial.core.banking.CoreService;
 import tutorial.core.banking.CoreService.InternalTransferStatus;
 import tutorial.core.banking.IDataRepository;
 import tutorial.core.banking.IEmailSender;
-import tutorial.core.banking.InterBankingService;
 
 /*
  * We want to test every corner of our implemented business logic

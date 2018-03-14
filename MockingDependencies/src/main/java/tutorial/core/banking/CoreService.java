@@ -30,8 +30,6 @@ public class CoreService {
 		double toNewBalanace = toBalance+amount;
 		double fromNewBalanace = fromBalance-amount;
 		
-		// critical business logic ends here
-		
 		dataRepository.SetBalanceOfAccount(from.AccountNumber,toNewBalanace);
 		dataRepository.SetBalanceOfAccount(to.AccountNumber,fromNewBalanace);
 		
