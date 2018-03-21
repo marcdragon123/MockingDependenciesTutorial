@@ -7,37 +7,123 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
+import com.google.common.io.ByteSource;
 
 import consistency.checking.contracts.IDataStore;
+import consistency.checking.fileSystem.FileSystemUnit.FileSystemUnitType;
 
 public class FileSystemDataStore implements IDataStore<FileSystemUnit>,Iterable<FileSystemUnit> {
 	
-	private String path;
 	private Directory rootDirectory;
 
-	public FileSystemDataStore(String path) {
-		this.path=path;
+	public FileSystemDataStore(String rootPath) {
 		
-		// we should initialize rootDirectory here with all its inner files and directories
-		Path unitPath= Paths.get(path);
-		/*final List<Path> files=new ArrayList<>();
-		 try {
-		    Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
-		     @Override
-		     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-		          if(!attrs.isDirectory()){
-		               files.add(file);
-		          }
-		          return FileVisitResult.CONTINUE;
-		      }
-		     });
-		 } catch (IOException e) {
-		      e.printStackTrace();
-		 }*/
-		
+		getFiles(rootPath);
 	}
 
+	/*
+	 * hard-coded list of files. needs to get replaced with actual filesystem
+	 */
+	private void getFiles(String rootPath) {
+		
+		this.rootDirectory = new Directory(rootPath);
+
+		String file1Path="UserFiles\\Bank Accounts.txt";
+		
+		FileSystemUnit file1 = new File(
+				file1Path,
+				getContentOfFile(file1Path));
+		
+		String file2Path="UserFiles\\Passwords.txt";
+		FileSystemUnit file2 = new File(
+				file2Path,
+				getContentOfFile(file2Path));
+		
+		String file3Path="UserFiles\\private-photo.txt";
+		FileSystemUnit file3 = new File(
+				file3Path,
+				getContentOfFile(file3Path));
+		
+		String innerDirPath="UserFiles\\Images";
+		Directory innerDir = new Directory(innerDirPath);
+		
+		String file4Path="UserFiles\\Images\\mom.txt";
+		FileSystemUnit file4 = new File(
+				file4Path,
+				getContentOfFile(file4Path));
+		
+		String file5Path="UserFiles\\Images\\family.txt";
+		FileSystemUnit file5 = new File(
+				file5Path,
+				getContentOfFile(file5Path));
+		
+		innerDir.setValue(new FileSystemUnit[] {file4,file5});
+		rootDirectory.setValue(new FileSystemUnit[] {file1,file2,file3,innerDir});
+		/*try {
+		    
+			Files.walkFileTree(unitPath, new SimpleFileVisitor<Path>(){
+		     
+				
+				private List<FileSystemUnit> currentUnits;
+				private Directory currentDirectory;
+				
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+					
+					if(attrs.isDirectory()){
+						
+						String directoryPath = file.toString();
+						Directory unitDirectory = new Directory(directoryPath);
+						currentUnits.add(unitDirectory);
+						foundDirectories.add(unitDirectory);
+						
+					}else {
+						
+						String filePath = file.toString();
+						ByteSource fileContent = com.google.common.io.Files
+								.asByteSource(new java.io.File(filePath));
+						
+						File unitFile = new File(filePath,fileContent);
+						currentUnits.add(unitFile);
+					}
+					
+					return FileVisitResult.CONTINUE;
+				}
+				
+				@Override
+				public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+					
+					currentDirectory = foundDirectories.stream()
+							.filter((directory)->directory.getKey().equals(dir.toString()))
+							.findFirst()
+							.orElse(null);
+					
+					currentUnits= new ArrayList<FileSystemUnit>();
+					return FileVisitResult.CONTINUE;
+				}
+				
+				@Override
+				public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+					currentDirectory.setValue(currentUnits.toArray(new FileSystemUnit[currentUnits.size()]));
+					return FileVisitResult.CONTINUE;
+				}
+		    });
+		} catch (IOException e) {
+		      e.printStackTrace();
+		}
+		*/
+	}
+
+	private ByteSource getContentOfFile(String filePath) {
+		return  com.google.common.io.Files
+				.asByteSource(new java.io.File(filePath));
+	}
+	
 	@Override
 	public FileSystemUnit getDataUnit(String unitPath) {
 		return null;

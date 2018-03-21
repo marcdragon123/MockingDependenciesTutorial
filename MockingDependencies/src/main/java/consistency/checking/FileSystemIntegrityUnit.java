@@ -8,30 +8,28 @@ import consistency.checking.main.FileSystemHashGenerator;
 
 public class FileSystemIntegrityUnit implements IDataUnit<String> {
 
-	String filePath;
+	String path;
 	private String integrityValue;
 	private FileSystemHashGenerator hashGenerator;
 	
 	public FileSystemIntegrityUnit(FileSystemUnit unit,FileSystemHashGenerator hashGenerator) {
 		
 		this.hashGenerator=hashGenerator;
-		if(unit instanceof File)
-			integrityValue=ComputeIntegrityValue((File)unit);
-		else
-			integrityValue=ComputeIntegrityValue((Directory)unit);
-	}
-	
-	private String ComputeIntegrityValue(File file) {
-		return hashGenerator.hash(file);
-	}
-	
-	private String ComputeIntegrityValue(Directory directory) {
-		return hashGenerator.hash(directory);
+		if(unit instanceof File) {
+			this.path=((File)unit).getKey();
+			integrityValue=hashGenerator.hash(unit);
+		}
+			
+		else {
+			this.path=((Directory)unit).getKey();
+			integrityValue=hashGenerator.hash(unit);
+		}
+			
 	}
 
 	@Override
 	public String getKey() {
-		return filePath;
+		return path;
 	}
 
 	@Override

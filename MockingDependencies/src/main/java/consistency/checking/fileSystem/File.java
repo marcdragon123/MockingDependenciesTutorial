@@ -1,18 +1,20 @@
 package consistency.checking.fileSystem;
 
+import com.google.common.io.ByteSource;
+
 import consistency.checking.contracts.IDataUnit;
 
-public class File extends FileSystemUnit implements IDataUnit<byte[]> {
+public class File extends FileSystemUnit implements IDataUnit<ByteSource> {
 
-	byte[] content=null;
+	ByteSource content=null;
 	String filePath;
 	Directory owner;
 	
-	public File(String filePath,byte[] content) {
+	public File(String filePath,ByteSource content) {
 		super(FileSystemUnitType.File);
 		this.filePath=filePath;
 		this.content=content;
-		
+
 	}
 	
 	@Override
@@ -21,12 +23,12 @@ public class File extends FileSystemUnit implements IDataUnit<byte[]> {
 	}
 
 	@Override
-	public byte[] getValue() {
+	public ByteSource getValue() {
 		return content;
 	}
 
 	@Override
-	public void setValue(byte[] value) {
+	public void setValue(ByteSource value) {
 		
 	}
 
