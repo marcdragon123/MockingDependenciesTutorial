@@ -19,7 +19,9 @@ public class Directory extends FileSystemUnit implements IDataUnit<FileSystemUni
 		this.directoryPath=directoryPath;
 	}
 	
-	
+	/*
+	 * returns directoryPath
+	 */
 	@Override
 	public String getKey() {
 		return directoryPath;

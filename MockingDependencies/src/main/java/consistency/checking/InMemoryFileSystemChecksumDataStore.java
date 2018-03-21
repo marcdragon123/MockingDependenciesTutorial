@@ -8,7 +8,7 @@ import consistency.checking.contracts.IDataUnit;
 /*
  * Holds FileSystemUnits (File/Directory) and their corresponding hash values
  */
-public class InMemoryFileSystemIntegrityDataStore implements IDataStore<FileSystemIntegrityUnit>{
+public class InMemoryFileSystemChecksumDataStore implements IDataStore<FileSystemIntegrityUnit>{
 
 	
 	private HashMap<String,FileSystemIntegrityUnit> map= new HashMap<String,FileSystemIntegrityUnit>();

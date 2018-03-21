@@ -3,7 +3,7 @@ package consistency.checking.main;
 import java.util.concurrent.TimeUnit;
 
 import consistency.checking.FileSystemIntegrityUnit;
-import consistency.checking.InMemoryFileSystemIntegrityDataStore;
+import consistency.checking.InMemoryFileSystemChecksumDataStore;
 import consistency.checking.contracts.IHashGenerator;
 import consistency.checking.contracts.INotifier;
 import consistency.checking.fileSystem.FileConsistencyChecker;
@@ -15,13 +15,13 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 
 		String userFolderPath="UserFiles";
-		InMemoryFileSystemIntegrityDataStore integrityStore= new InMemoryFileSystemIntegrityDataStore();
+		InMemoryFileSystemChecksumDataStore integrityStore= new InMemoryFileSystemChecksumDataStore();
 		
 		InitIntegrityStore(integrityStore,userFolderPath); // at first we compute the correct checksum for all files and folders
 		CheckIntegrity(integrityStore,userFolderPath); // we will constantly check the correctness of files
 	}
 
-	private static void InitIntegrityStore(InMemoryFileSystemIntegrityDataStore integrityStore,String path) {
+	private static void InitIntegrityStore(InMemoryFileSystemChecksumDataStore integrityStore,String path) {
 	
 		FileSystemDataStore fileStore=new FileSystemDataStore(path);
 		
@@ -30,7 +30,7 @@ public class Main {
 		}
 	}
 
-	private static void CheckIntegrity(InMemoryFileSystemIntegrityDataStore integrityStore,String path) throws InterruptedException {
+	private static void CheckIntegrity(InMemoryFileSystemChecksumDataStore integrityStore,String path) throws InterruptedException {
 
 		INotifier notifier= new ConsoleNotifier();
 		FileSystemHashGenerator hashGenerator= new FileSystemHashGenerator();
