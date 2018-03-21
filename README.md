@@ -1,7 +1,10 @@
-# Mockito Tutorial
+# Consistenct Checking Tutorial
 
-The code contains a simple [banking example](https://github.com/mirsaeedi/MockingDependencies/tree/master/MockingDependencies/src/main/java/tutorial/core/banking) to transfer money from one account to another. There are also 6 [unit tests](https://github.com/mirsaeedi/MockingDependencies/tree/master/MockingDependencies/src/test/java/tutoria/core/banking/transfer/test) to check different corners of the domain logic. However, all of these tests are failing because of a bug in the production code or test code. Students should try to find the bugs and modify the code to fix the tests.
+0. All the packages which are relevant to this tutorial:consistency.checking.*
+1. Clone The Repo
+2. Checkout branch consistency_checking
+3. implement the consistenct checking logic inside class FileConsistencyChecker. Inside this class you have all the required data to be able to check the consistenct
+4. main class is located at package consistenct.checking.main
+5. Change contents of files to check whether your code can detect the inconsistencies
 
-# Answers
 
-the answers to the exercises are in the branches of this repo.
