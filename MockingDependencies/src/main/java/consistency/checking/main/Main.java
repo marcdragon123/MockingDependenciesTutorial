@@ -1,7 +1,7 @@
 package consistency.checking.main;
 
-import consistency.checking.InMemoryIntegrityDataStore;
 import consistency.checking.FileSystemIntegrityUnit;
+import consistency.checking.InMemoryFileSystemIntegrityDataStore;
 import consistency.checking.fileSystem.FileConsistencyChecker;
 import consistency.checking.fileSystem.FileSystemDataStore;
 import consistency.checking.fileSystem.FileSystemUnit;
@@ -10,13 +10,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		InMemoryIntegrityDataStore integrityStore= new InMemoryIntegrityDataStore();
+		InMemoryFileSystemIntegrityDataStore integrityStore= new InMemoryFileSystemIntegrityDataStore();
 		
 		InitIntegrityStore(integrityStore);
 		CheckIntegrity(integrityStore);
 	}
 
-	private static void InitIntegrityStore(InMemoryIntegrityDataStore integrityStore) {
+	private static void InitIntegrityStore(InMemoryFileSystemIntegrityDataStore integrityStore) {
 	
 		FileSystemDataStore fileStore=new FileSystemDataStore("path");
 		
@@ -25,7 +25,7 @@ public class Main {
 		}
 	}
 
-	private static void CheckIntegrity(InMemoryIntegrityDataStore integrityStore) {
+	private static void CheckIntegrity(InMemoryFileSystemIntegrityDataStore integrityStore) {
 
 		while(true) {
 		

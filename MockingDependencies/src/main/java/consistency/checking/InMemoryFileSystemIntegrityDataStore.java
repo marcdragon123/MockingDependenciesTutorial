@@ -5,7 +5,7 @@ import java.util.HashMap;
 import consistency.checking.contracts.IDataStore;
 import consistency.checking.contracts.IDataUnit;
 
-public class InMemoryIntegrityDataStore implements IDataStore<FileSystemIntegrityUnit>{
+public class InMemoryFileSystemIntegrityDataStore implements IDataStore<FileSystemIntegrityUnit>{
 
 	
 	private HashMap<String,FileSystemIntegrityUnit> map;
