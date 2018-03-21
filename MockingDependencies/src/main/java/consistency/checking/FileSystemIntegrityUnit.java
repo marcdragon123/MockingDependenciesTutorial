@@ -10,21 +10,10 @@ public class FileSystemIntegrityUnit implements IDataUnit<String> {
 
 	String path;
 	private String integrityValue;
-	private FileSystemHashGenerator hashGenerator;
-	
 	public FileSystemIntegrityUnit(FileSystemUnit unit,FileSystemHashGenerator hashGenerator) {
 		
-		this.hashGenerator=hashGenerator;
-		if(unit instanceof File) {
-			this.path=((File)unit).getKey();
-			integrityValue=hashGenerator.hash(unit);
-		}
-			
-		else {
-			this.path=((Directory)unit).getKey();
-			integrityValue=hashGenerator.hash(unit);
-		}
-			
+		this.path=unit.getPath();
+		integrityValue=hashGenerator.hash(unit);	
 	}
 
 	@Override

@@ -36,4 +36,9 @@ public class Directory extends FileSystemUnit implements IDataUnit<FileSystemUni
 	public void setValue(FileSystemUnit[] units) {
 		this.units=units;
 	}
+
+	@Override
+	public String getPath() {
+		return this.directoryPath;
+	}
 }

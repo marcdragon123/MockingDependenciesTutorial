@@ -15,22 +15,22 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 
 		String userFolderPath="UserFiles";
-		InMemoryFileSystemChecksumDataStore integrityStore= new InMemoryFileSystemChecksumDataStore();
+		InMemoryFileSystemChecksumDataStore checksumStore= new InMemoryFileSystemChecksumDataStore();
 		
-		InitIntegrityStore(integrityStore,userFolderPath); // at first we compute the correct checksum for all files and folders
-		CheckIntegrity(integrityStore,userFolderPath); // we will constantly check the correctness of files
+		InitIntegrityStore(checksumStore,userFolderPath); // at first we compute the correct checksum for all files and folders
+		CheckIntegrity(checksumStore,userFolderPath); // we will constantly check the correctness of files
 	}
 
-	private static void InitIntegrityStore(InMemoryFileSystemChecksumDataStore integrityStore,String path) {
+	private static void InitIntegrityStore(InMemoryFileSystemChecksumDataStore checksumStore,String path) {
 	
 		FileSystemDataStore fileStore=new FileSystemDataStore(path);
 		
 		for(FileSystemUnit unit:fileStore) {
-			integrityStore.store(new FileSystemIntegrityUnit(unit, new FileSystemHashGenerator()));	
+			checksumStore.store(new FileSystemIntegrityUnit(unit, new FileSystemHashGenerator()));	
 		}
 	}
 
-	private static void CheckIntegrity(InMemoryFileSystemChecksumDataStore integrityStore,String path) throws InterruptedException {
+	private static void CheckIntegrity(InMemoryFileSystemChecksumDataStore checksumStore,String path) throws InterruptedException {
 
 		INotifier notifier= new ConsoleNotifier();
 		FileSystemHashGenerator hashGenerator= new FileSystemHashGenerator();
@@ -39,7 +39,7 @@ public class Main {
 		while(true) {
 		
 			FileSystemDataStore fileStore=new FileSystemDataStore(path);
-			FileConsistencyChecker consistencyChecker = new FileConsistencyChecker(notifier,integrityStore,fileStore,hashGenerator);
+			FileConsistencyChecker consistencyChecker = new FileConsistencyChecker(notifier,checksumStore,fileStore,hashGenerator);
 			consistencyChecker.checkConsistency();
 			TimeUnit.SECONDS.sleep(1);
 		}

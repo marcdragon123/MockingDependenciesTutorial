@@ -1,6 +1,6 @@
 package consistency.checking.fileSystem;
 
-public class FileSystemUnit {
+public abstract class FileSystemUnit {
 
 	FileSystemUnitType type;
 	
@@ -12,6 +12,7 @@ public class FileSystemUnit {
 		return type;
 	}
 	
+	public abstract String getPath();
 	
 	public enum FileSystemUnitType{
 		File,Directory

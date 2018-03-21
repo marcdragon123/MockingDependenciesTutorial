@@ -9,18 +9,18 @@ public class FileConsistencyChecker implements IConsistencyChecker {
 
 
 	private INotifier notifier;
-	private InMemoryFileSystemChecksumDataStore integrityStore;
+	private InMemoryFileSystemChecksumDataStore checksumStore;
 	private FileSystemDataStore fileStore;
 	private FileSystemHashGenerator hashGenerator;
 
 	public FileConsistencyChecker(INotifier notifer,
-			InMemoryFileSystemChecksumDataStore integrityStore, // for each file/directory holds the corresponding hash value
+			InMemoryFileSystemChecksumDataStore checksumStore, // for each file/directory holds the corresponding hash value
 			FileSystemDataStore fileStore, // contains all the files and directories
 			FileSystemHashGenerator hashGenerator // helps you to compute the hash of files/directories
 			) {
 		
 		this.notifier=notifer;
-		this.integrityStore=integrityStore;
+		this.checksumStore=checksumStore;
 		this.fileStore=fileStore;
 		this.hashGenerator=hashGenerator;
 		

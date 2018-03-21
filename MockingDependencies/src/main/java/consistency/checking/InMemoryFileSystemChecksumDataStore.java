@@ -6,7 +6,7 @@ import consistency.checking.contracts.IDataStore;
 import consistency.checking.contracts.IDataUnit;
 
 /*
- * Holds FileSystemUnits (File/Directory) and their corresponding hash values
+ * Holds FileSystemUnits (File/Directory) and their corresponding checksum values
  */
 public class InMemoryFileSystemChecksumDataStore implements IDataStore<FileSystemIntegrityUnit>{
 

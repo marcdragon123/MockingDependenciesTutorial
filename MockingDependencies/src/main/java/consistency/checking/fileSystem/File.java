@@ -32,6 +32,11 @@ public class File extends FileSystemUnit implements IDataUnit<ByteSource> {
 		
 	}
 
+	@Override
+	public String getPath() {
+		return this.filePath;
+	}
+
 	
 	
 }
