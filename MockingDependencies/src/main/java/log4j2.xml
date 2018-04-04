@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="Sale" packages="">
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+    		<PatternLayout pattern="%message"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+	<Root level="all">
+      
+    </Root>
+	</Loggers>
+</Configuration>

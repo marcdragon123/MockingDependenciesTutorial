@@ -8,11 +8,9 @@ public class ObjectGraphModule extends AbstractModule {
 	protected void configure() {
 		
 		bind(IDataRepository.class).to(DataRepository.class);
-		bind(EmailSender.class).to(EmailSender.class);
-		
+		bind(IEmailSender.class).to(EmailSender.class);
 		Logger logger = new Logger(); // singleton logger
 		bind(ILogger.class).toInstance(logger);
-
 	}
 
 }

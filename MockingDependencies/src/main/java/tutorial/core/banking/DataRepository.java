@@ -2,6 +2,8 @@ package tutorial.core.banking;
 
 import java.util.concurrent.TimeUnit;
 
+import com.google.inject.Inject;
+
 /*
  *  This is an external Dependency
  */
@@ -9,6 +11,7 @@ public class DataRepository implements ExternalDependency, IDataRepository {
 
 	private ILogger logger;
 	
+	@Inject
 	public DataRepository(ILogger logger) {
 		this.logger=logger;
 	}

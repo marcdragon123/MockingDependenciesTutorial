@@ -3,6 +3,8 @@ package tutorial.core.banking;
 import java.net.ConnectException;
 import java.util.concurrent.TimeUnit;
 
+import com.google.inject.Inject;
+
 /*
  *  This is an external Dependency
  */
@@ -12,6 +14,7 @@ public class EmailSender implements ExternalDependency, IEmailSender {
 	
 	private ILogger logger;
 
+	@Inject
 	public EmailSender(ILogger logger) {
 		this.logger=logger;
 	}
