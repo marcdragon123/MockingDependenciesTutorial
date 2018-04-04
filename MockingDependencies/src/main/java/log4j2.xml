@@ -2,8 +2,18 @@
 <Configuration status="warn" name="Sale" packages="">
 	<Appenders>
 		<Console name="ConsoleAppender" target="SYSTEM_OUT">
-    		<PatternLayout pattern="%message"/>
+    		<PatternLayout pattern="%message%n"/>
 		</Console>
+		<RollingFile name="RollingFileAppender" fileName="logs/app.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+        <PatternLayout>
+            <Pattern>%message%n</Pattern>
+        </PatternLayout>
+        <Policies>
+            <OnStartupTriggeringPolicy />
+            <SizeBasedTriggeringPolicy size="50 MB" />
+        </Policies>
+        <DefaultRolloverStrategy max="20" />
+    </RollingFile>
 	</Appenders>
 	<Loggers>
 	<Root level="all">

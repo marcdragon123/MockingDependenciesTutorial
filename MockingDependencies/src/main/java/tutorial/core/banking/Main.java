@@ -23,6 +23,10 @@ public class Main {
 
 	private static void IntializeContextualLogging() {
 		
+		// populate ThreadContext using HttpContext 
+		// 
+		
+		
 	}
 
 
@@ -34,6 +38,7 @@ public class Main {
 		HttpContext.Username="Bob";
 		HttpContext.SessionId="231312419238012DKASL2";
 		HttpContext.RequestedUrl="./accounts/transfer?from=0&to=1";
+		HttpContext.UserLocation="24,56";
 		
 		
 	}
