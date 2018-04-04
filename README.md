@@ -5,7 +5,7 @@
 
 # Steps
 
-0. The log4j setting file is located inside *src/main/java* and is named log4j2.xml by convention. You can learn about file naming convention on [log4j documents](https://logging.apache.org/log4j/2.x/manual/configuration.html). In this hands-on, we are going to improve the logging inside the [CoreService class](https://github.com/mirsaeedi/MockingDependencies/blob/logging/MockingDependencies/src/main/java/tutorial/core/banking/CoreService.java).
+0. The log4j setting file is located inside *src/main/java* and is named [log4j2.xml](https://github.com/mirsaeedi/MockingDependencies/blob/logging/MockingDependencies/src/main/java/log4j2.xml) by convention. You can learn about file naming convention on [log4j documents](https://logging.apache.org/log4j/2.x/manual/configuration.html). In this hands-on, we are going to improve the logging inside the [CoreService class](https://github.com/mirsaeedi/MockingDependencies/blob/logging/MockingDependencies/src/main/java/tutorial/core/banking/CoreService.java).
 
 1. Modify the log4j2.xml and set the Root Logger to use the defined ConsoleAppender. So, you can see the logs inside the console. Then, run the main method inside tutorial.core.banking package to see the logs.
 
