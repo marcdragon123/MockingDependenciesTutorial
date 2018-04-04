@@ -20,4 +20,4 @@
   - Process Id
 
 3. Logging in wild should help us to answer What, When, Who questions. So, usually we need to enrich our logs with some information about the context of the request/operation. For example, in web applications, we need to know the username, ip address, requested url and session id in order to diagnose the problem. 
-In our sample application, we have a http context filled with fake information. You should implement the *IntializeContextualLogging* method by using the HttpContext class to provide log4j with contexual data. You can get help from [log4j documents](https://logging.apache.org/log4j/2.x/manual/thread-context.html).
+In our sample application, we have a http context filled with fake information. You should implement the *IntializeContextualLogging* method by using the HttpContext class to provide log4j with contexual data. You can get help from [log4j documents](https://logging.apache.org/log4j/2.x/manual/thread-context.html) and [here](https://howtodoinjava.com/log4j2/threadcontext-fish-tagging/).
