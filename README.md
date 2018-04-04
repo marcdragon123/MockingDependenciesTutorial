@@ -19,7 +19,7 @@
   - Thread Id
   - Process Id
 
-3. Logging in wild should help us to answer What, When, Who questions. So, usually, we need to enrich our logs with some information about the context of the request/operation. For example, in web applications, we need to know the username, IP address, requested URL and session id in order to diagnose the problem. 
+3. A good Logging practice should help us to answer What, When, Who questions. So, usually, we need to enrich our logs with some information about the context of the request/operation. For example, in web applications, we need to know the username, IP address, requested URL and session id in order to diagnose the problem. 
 In our sample application, we have an HTTP context filled with fake information. You should implement the *IntializeContextualLogging* method by using the HttpContext class to provide log4j with contextual data. So, the contextual data will be logged alongside the message and other parameters. You can get help from [log4j documents](https://logging.apache.org/log4j/2.x/manual/thread-context.html) and [here](https://howtodoinjava.com/log4j2/threadcontext-fish-tagging/).
 
 4. Change the appender to RollingFileAppender. Run the program again and take a look at the created file. Then, run the program once more. Take a look at the log folder again. Make sure you know what are the used policies. You can read about them [here](https://logging.apache.org/log4j/2.x/manual/appenders.html#RollingFileAppender).  
